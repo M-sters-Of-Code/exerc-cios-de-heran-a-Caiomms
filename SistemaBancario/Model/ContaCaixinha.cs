@@ -22,12 +22,12 @@ namespace SistemaBancario.Model
                 throw new ArgumentException("O valor do saque deve ser maior que zero.");
             if (valor > Saldo)
                 throw new InvalidOperationException("Saldo insuficiente para realizar o saque.");
-            Saldo -= (valor - 5); // Saldo = Saldo - valor;
+            Saldo -= (valor + 5); // Saldo = Saldo - valor;
         }
         public override void Depositar(decimal valor)
         {
-            if (valor <= 1)
-                throw new ArgumentException("O valor do depósito deve ser maior que 1,00.");
+            if (valor < 1)
+                throw new ArgumentOutOfRangeException("O valor do depósito deve ser maior que 1,00.");
             Saldo += (valor + 1); // Saldo = Saldo + valor;
         }
     }
